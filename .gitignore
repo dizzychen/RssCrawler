@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+.venv/
+venv/
+env/
+
+# 数据文件
+*.db
+articles.db
+
+# 输出目录内容（保留目录）
+output/*.xml
+
+# Cookie 文件（敏感信息）
+cookies/*.txt
+
+# 日志
+logs/*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

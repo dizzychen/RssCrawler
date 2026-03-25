@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ channel_title }}</title>
+    <link>{{ channel_link }}</link>
+    <description>{{ channel_description }}</description>
+    <lastBuildDate>{{ last_build_date }}</lastBuildDate>
+    <generator>RssCrawler FullText Proxy</generator>
+    <atom:link href="{{ self_link }}" rel="self" type="application/rss+xml"/>
+    {% for item in items %}
+    <item>
+      <title>{{ item.title | e }}</title>
+      <link>{{ item.link | e }}</link>
+      <guid isPermaLink="true">{{ item.link | e }}</guid>
+      <description><![CDATA[{{ item.content if item.content else item.summary }}]]></description>
+      {% if item.author %}
+      <author>{{ item.author | e }}</author>
+      {% endif %}
+      {% if item.published_at %}
+      <pubDate>{{ item.published_at }}</pubDate>
+      {% endif %}
+      <source url="{{ item.source_url | e }}">{{ item.source_name | e }}</source>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

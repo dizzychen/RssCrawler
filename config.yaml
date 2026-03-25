@@ -1,0 +1,37 @@
+global:
+  # 自动更新间隔（分钟）
+  update_interval: 10
+  # 每个 Feed 输出的最大文章数
+  feed_items_limit: 50
+  # 静态 XML 输出目录
+  output_dir: "./output"
+  # 日志级别: DEBUG / INFO / WARNING / ERROR
+  log_level: "INFO"
+  # HTTP 服务端口
+  server_port: 8080
+  # 服务绑定地址
+  server_host: "0.0.0.0"
+  # 数据库文件路径
+  db_path: "./articles.db"
+
+sources:
+  - name: "cnblogs-news"
+    url: "https://feed.cnblogs.com/news/rss"
+    cookie_file: "./cookies/cnblogs.txt"
+    content_selector: "#news_body"
+    requires_login: true
+    description: "博客园新闻"
+
+  - name: "ithome"
+    url: "https://www.ithome.com/rss/"
+    cookie_file: null
+    content_selector: ".post_content"
+    requires_login: false
+    description: "IT之家"
+
+  - name: "sspai"
+    url: "https://sspai.com/feed"
+    cookie_file: null
+    content_selector: ".article-body"
+    requires_login: false
+    description: "少数派"
