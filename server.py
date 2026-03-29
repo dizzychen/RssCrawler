@@ -18,6 +18,7 @@ def create_app(
     feed_gen: FeedGenerator,
     sources: list[dict],
     feed_items_limit: int = 50,
+    pref_filter=None,
 ) -> FastAPI:
     """
     创建 FastAPI 应用
@@ -27,6 +28,7 @@ def create_app(
         feed_gen: Feed 生成器实例
         sources: RSS 源配置列表
         feed_items_limit: 每个 Feed 的文章数量上限
+        pref_filter: 偏好筛选器实例（可选）
     
     Returns:
         FastAPI 应用实例
@@ -75,6 +77,8 @@ def create_app(
     async def aggregate_feed():
         """返回所有源的聚合全文 RSS Feed"""
         articles = store.get_articles(source_name=None, limit=feed_items_limit)
+        if pref_filter:
+            articles = pref_filter.filter_articles(articles)
         xml = feed_gen.generate_feed_xml(articles, source_name=None)
         return Response(content=xml, media_type="application/xml; charset=utf-8")
 
@@ -91,6 +95,8 @@ def create_app(
         articles = store.get_articles(
             source_name=source_name, limit=feed_items_limit
         )
+        if pref_filter:
+            articles = pref_filter.filter_articles(articles)
         xml = feed_gen.generate_feed_xml(articles, source_name, source_config)
         return Response(content=xml, media_type="application/xml; charset=utf-8")
 

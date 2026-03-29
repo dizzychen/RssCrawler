@@ -25,6 +25,7 @@ class CrawlScheduler:
         sources: list[dict],
         update_interval: int = 10,
         feed_items_limit: int = 50,
+        pref_filter=None,
     ) -> None:
         """
         Args:
@@ -33,12 +34,14 @@ class CrawlScheduler:
             sources: RSS 源配置列表
             update_interval: 更新间隔（分钟）
             feed_items_limit: 每个 Feed 输出的文章数量上限
+            pref_filter: 偏好筛选器实例（可选）
         """
         self.store = store
         self.feed_gen = feed_gen
         self.sources = sources
         self.update_interval = update_interval
         self.feed_items_limit = feed_items_limit
+        self.pref_filter = pref_filter
         self._fetchers: dict[str, ContentFetcher] = {}
 
         self.scheduler = BackgroundScheduler()
@@ -84,6 +87,13 @@ class CrawlScheduler:
 
                 for i, article in enumerate(unfetched, 1):
                     link = article["link"]
+
+                    # 跳过付费/会员文章（如少数派 /prime/），未登录无法抓取正文
+                    if "/prime/" in link:
+                        logger.debug("  [%d/%d] 跳过付费文章: %s", i, len(unfetched), link)
+                        self.store.mark_fetch_failed(link, name)
+                        continue
+
                     logger.info("  [%d/%d] 抓取: %s", i, len(unfetched), link)
 
                     content = fetcher.fetch_content(link, selector)
@@ -101,6 +111,9 @@ class CrawlScheduler:
             source_name=name, limit=self.feed_items_limit
         )
         if stored_articles:
+            # 偏好筛选（如果启用）
+            if self.pref_filter:
+                stored_articles = self.pref_filter.filter_articles(stored_articles)
             self.feed_gen.export_static_xml(stored_articles, name, source)
 
         logger.info("=== 源 [%s] 抓取完成 ===", name)
@@ -117,7 +130,8 @@ class CrawlScheduler:
 
         # 生成聚合 Feed
         self.feed_gen.export_all_static(
-            self.store, self.sources, self.feed_items_limit
+            self.store, self.sources, self.feed_items_limit,
+            pref_filter=self.pref_filter,
         )
 
         logger.info("====== 全量抓取完成 ======")

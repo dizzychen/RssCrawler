@@ -24,11 +24,15 @@ class FeedGenerator:
         self,
         template_dir: str = "templates",
         output_dir: str = "output",
-        server_host: str = "localhost",
-        server_port: int = 8080,
+        base_url: str = "http://localhost:8080",
+        sources: Optional[list[dict[str, object]]] = None,
     ) -> None:
         self.output_dir = output_dir
-        self.base_url = f"http://{server_host}:{server_port}"
+        self.base_url = base_url.rstrip("/")
+        # 源名称 → 源配置映射，用于聚合 Feed 中查找 source_url
+        self.sources_map: dict[str, dict[str, object]] = {
+            str(s["name"]): s for s in (sources or [])
+        }
 
         # 初始化 Jinja2 模板引擎
         self.env = Environment(
@@ -76,9 +80,13 @@ class FeedGenerator:
         feed_items = []
         for article in articles:
             item = dict(article)
-            item["source_url"] = (
-                source_config.get("url", "") if source_config else ""
-            )
+            # 确定 source_url：优先从 source_config 取，否则从 sources_map 查
+            if source_config:
+                item["source_url"] = source_config.get("url", "")
+            else:
+                article_source = str(item.get("source_name", ""))
+                src = self.sources_map.get(article_source)
+                item["source_url"] = str(src.get("url", "")) if src else ""
             if not item.get("source_name"):
                 item["source_name"] = source_name or "unknown"
 
@@ -136,6 +144,7 @@ class FeedGenerator:
         store,
         sources: list[dict[str, object]],
         feed_items_limit: int = 50,
+        pref_filter=None,
     ) -> None:
         """
         为所有源生成静态 XML 文件（含聚合 Feed）
@@ -144,11 +153,14 @@ class FeedGenerator:
             store: ArticleStore 实例
             sources: 源配置列表
             feed_items_limit: 每个 Feed 的文章数量上限
+            pref_filter: 偏好筛选器实例（可选）
         """
         for source in sources:
             name = str(source["name"])
             articles = store.get_articles(source_name=name, limit=feed_items_limit)
             if articles:
+                if pref_filter:
+                    articles = pref_filter.filter_articles(articles)
                 self.export_static_xml(articles, name, source)
             else:
                 logger.debug("源 [%s] 无文章，跳过静态导出", name)
@@ -156,6 +168,8 @@ class FeedGenerator:
         # 聚合 Feed
         all_articles = store.get_articles(source_name=None, limit=feed_items_limit)
         if all_articles:
+            if pref_filter:
+                all_articles = pref_filter.filter_articles(all_articles)
             xml = self.generate_feed_xml(all_articles, source_name=None)
             filepath = os.path.join(self.output_dir, "all.xml")
             try:

@@ -55,6 +55,16 @@ class ArticleStore:
                     CREATE INDEX IF NOT EXISTS idx_created_at 
                     ON articles(created_at DESC)
                 """)
+                # 偏好筛选结果缓存表
+                conn.execute("""
+                    CREATE TABLE IF NOT EXISTS article_filter_cache (
+                        source_name TEXT NOT NULL,
+                        link TEXT NOT NULL,
+                        is_relevant BOOLEAN NOT NULL,
+                        judged_at TEXT DEFAULT (datetime('now', 'localtime')),
+                        PRIMARY KEY (source_name, link)
+                    )
+                """)
                 conn.commit()
                 logger.info("数据库初始化完成: %s", self.db_path)
             finally:
@@ -246,5 +256,44 @@ class ArticleStore:
                     (link, source_name),
                 ).fetchone()
                 return row is not None
+            finally:
+                conn.close()
+
+    # ── 偏好筛选缓存 ──────────────────────────────────────
+
+    def get_filter_cache(self, link: str, source_name: str) -> Optional[bool]:
+        """
+        查询文章的筛选缓存结果
+
+        Returns:
+            True (通过) / False (不通过) / None (无缓存)
+        """
+        with self._lock:
+            conn = self._get_conn()
+            try:
+                row = conn.execute(
+                    "SELECT is_relevant FROM article_filter_cache WHERE link = ? AND source_name = ?",
+                    (link, source_name),
+                ).fetchone()
+                if row is not None:
+                    return bool(row["is_relevant"])
+                return None
+            finally:
+                conn.close()
+
+    def set_filter_cache(self, link: str, source_name: str, is_relevant: bool) -> None:
+        """写入文章的筛选缓存结果"""
+        with self._lock:
+            conn = self._get_conn()
+            try:
+                conn.execute(
+                    """
+                    INSERT OR REPLACE INTO article_filter_cache 
+                    (source_name, link, is_relevant)
+                    VALUES (?, ?, ?)
+                    """,
+                    (source_name, link, is_relevant),
+                )
+                conn.commit()
             finally:
                 conn.close()

@@ -11,8 +11,23 @@ global:
   server_port: 8080
   # 服务绑定地址
   server_host: "0.0.0.0"
+  # Feed 中显示的外部访问地址（用于 atom:link 等）
+  base_url: "http://localhost:8080"
   # 数据库文件路径
   db_path: "./articles.db"
+
+# 偏好筛选配置（基于 LLM 的智能内容过滤）
+filter:
+  # 是否启用偏好筛选（需配置 api_key 后才生效）
+  enabled: true
+  # DashScope API Key（也可通过环境变量 DASHSCOPE_API_KEY 设置，环境变量优先）
+  api_key: "sk-1df055035e0a4291b70b80ab1989e8b6"
+  # LLM 模型名称
+  model: "qwen-plus"
+  # 每批判断的文章数量
+  batch_size: 10
+  # 偏好数据文件目录
+  data_dir: "./data"
 
 sources:
   - name: "cnblogs-news"

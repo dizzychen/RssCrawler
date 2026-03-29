@@ -23,6 +23,7 @@ from storage import ArticleStore
 from feed_generator import FeedGenerator
 from scheduler import CrawlScheduler
 from server import create_app
+from preference_filter import PreferenceFilter
 
 
 def load_config(config_path: str) -> dict:
@@ -125,6 +126,7 @@ def main():
     output_dir = global_config.get("output_dir", "./output")
     db_path = global_config.get("db_path", "./articles.db")
     log_level = global_config.get("log_level", "INFO")
+    base_url = global_config.get("base_url", f"http://localhost:{server_port}")
 
     # 2. 初始化日志
     setup_logging(log_level)
@@ -137,9 +139,27 @@ def main():
     feed_gen = FeedGenerator(
         template_dir="templates",
         output_dir=output_dir,
-        server_host=server_host,
-        server_port=server_port,
+        base_url=base_url,
+        sources=sources,
     )
+
+    # 3.5 初始化偏好筛选器（可选）
+    filter_config = config.get("filter", {})
+    pref_filter = None
+    if filter_config.get("enabled", False):
+        # 环境变量优先
+        api_key = os.environ.get("DASHSCOPE_API_KEY") or filter_config.get("api_key", "")
+        if api_key:
+            pref_filter = PreferenceFilter(
+                store=store,
+                data_dir=filter_config.get("data_dir", "./data"),
+                api_key=api_key,
+                model=filter_config.get("model", "qwen-plus"),
+                batch_size=filter_config.get("batch_size", 10),
+            )
+            logger.info("偏好筛选器已启用 (模型: %s)", filter_config.get("model", "qwen-plus"))
+        else:
+            logger.warning("偏好筛选已启用但未配置 API Key，筛选功能不生效")
 
     # 4. 创建调度器
     crawl_scheduler = CrawlScheduler(
@@ -148,6 +168,7 @@ def main():
         sources=sources,
         update_interval=update_interval,
         feed_items_limit=feed_items_limit,
+        pref_filter=pref_filter,
     )
 
     if args.crawl_only:
@@ -175,6 +196,7 @@ def main():
         feed_gen=feed_gen,
         sources=sources,
         feed_items_limit=feed_items_limit,
+        pref_filter=pref_filter,
     )
 
     logger.info("HTTP 服务启动: http://%s:%d", server_host, server_port)

@@ -1,0 +1,455 @@
+# 记忆数据导出
+导出时间：2026-03-26
+
+---
+
+## 灵魂档案 (SOUL.md)
+
+# 我的阅读灵魂档案
+
+## 关于我
+
+全栈架构师 & AI Agent 应用层开发者（不涉及大模型底层）。聚焦 OpenClaw、自动化情报监测管道，坚守 Ligne Claire 逻辑（边界清晰、意图明确）。
+
+## 阅读目的
+
+* 捕获 Agent/RAG 应用层关键进展
+* 转化开源 / 论文为生产方案
+* 融合技术与品牌运营，实现商业赋能
+
+## 兴趣领域
+
+* **AI Agent**：RAG 检索、Multi-Agent 协作、Skill Metadata 标准化、LLM 工具集成
+* **硬核后端**：Go/Rust/Tokio、分布式一致性、API-First、异步非阻塞
+* **全栈 / 前端**：Next.js、Tailwind CSS、Agent 交互功能美学
+* **产品与品牌**：数字化增长、科技品牌叙事、数据视觉叙事
+* **叙事科学**：科学史图解、技术演进图谱、Agent/LLM 可视化
+
+## 不感兴趣的内容
+
+* 低干货水文
+* 标题党营销
+* 混乱低信息密度文档
+* 浅度零代码教程
+* 大模型底层研发内容
+
+## 阅读哲学
+
+* 参数化阅读：构建 Agent 知识检索体系
+* 少即是多：简洁精准、边界清晰
+* 工程化落地：以可执行方案为终点
+
+## 当前关注
+
+* Agent 技能元数据标准化（API 契约、结构化规范）
+* OpenClaw 数字化叙事（品牌身份、内容生态、增长飞轮）
+* 生产级 RAG 落地（HyDE 优化、混合搜索、Agent 集成）
+* 自动化情报管道（多源聚合、智能过滤、信息摘要）
+---
+
+## 阅读画像 (PROFILE.md)
+
+# 阅读画像
+
+> 系统将根据阅读行为自动生成画像，请先阅读几篇文章。
+
+---
+
+## 阅读日志
+
+### 2026-03-26.md
+
+# 阅读日志 2026-03-26
+
+| 时间 | 行为 | 文章 | 来源 | 时长/关键词 |
+|------|------|------|------|----------|
+| 06:45:30 | REC_EXPOSURE | 罗技中国发布声明，就"罗技 G 官方旗舰店"违规视频内容致歉 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 维基百科向直接用 AI 撰写条目说"不"，仍允许 AI 润色和翻译 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 英伟达及黄仁勋遭投资者集体诉讼：被指隐瞒游戏显卡收入对加密货币挖矿的依赖 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 宣传视频称"我一降价就像狗一样跑来"，罗技客服称相关同事已被警告、处罚 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 专访 OPPO 陈希：打造 AIOS，就是模拟人生 \| 系统观 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 更奢华的 7 系和 X7：宝马新世代 Alpina 首批车型 5 月 15 日首秀 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | Epic 喜加二：《Hyper Echelon》《Havendock》游戏免费领取 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 问界汽车：关注到部分用户提出车辆软硬件升级的诉求，正在积极寻找解决方案 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 192MB 的 L3：AMD 锐龙 9 9950X3D2 双缓存版台式处理器上线 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 智己 LS8 汽车 45 分钟小订突破 10000 台，预售权益价 25.98 万元起 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 距离虽短意义重大：CERN 完成首次反质子卡车运输 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 奔驰"小 g"越野车谍照再曝：延续大 G 设计，车身预计长 4.4 米 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 三星 Galaxy A57 5G 手机国行 4 月 11 日开售：Exynos 1680 芯片、5000mAh 电池，3299 元起 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 被电装收购外的另一选择：消息称罗姆将就合并业务与三菱电机、东芝谈判 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 中国无人装甲车最新画面曝光：30 毫米速射炮、7.62 毫米机枪、反坦克导弹，模块化武器系统按需切换 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 英特尔发布 Q1.26 版锐炫 Arc Pro 专业显卡驱动程序，支持 B70 / B65 独立显卡 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 苹果宣布新增四家美国制造合作伙伴，计划在本土生产更多零部件 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 零跑朱江明：国内现在有 17 家车企，但国内市场容不下 17 家 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 英特尔确认不会推出酷睿 Ultra 9 处理器 290K Plus | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 王兴：美团力争成为未来本地生活服务需求的重要 AI 入口 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 一加李杰再谈手机内存成本上涨：幅度超 400% 可以说涨疯了，没有哪一家可以完全避开 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 《街头霸王 6》亚历克斯与养妹结婚剧情引争议，官方致歉但不打算改 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 大众、小鹏合作首款车型：中大型 SUV 与众 08 预售，23.99 万-29.99 万元 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 消息称 JDI 茂原显示工厂改建 AI 数据中心遇阻，美光等有意购入 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 网传"新能源车充电涨价是因为用油发电"？央视揭秘背后的真相 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 【IT之家开箱】iQOO Z11 实拍图赏：iQOO 手机最大 9020mAh 电池 + iQOO 首个 165Hz 护眼电竞屏 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 欧盟 AI 法案关键条款推迟实施，同时支持封禁脱衣换脸类应用 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 微星推出 MAG 272UP QD-OLED E16 显示器：26.5" UHD 165Hz | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 长城汽车魏牌赵永坡：智能驾驶路线上传感器越多未必越好，内耗反而抵消优势 | Rss聚合Feed | - |
+| 06:45:30 | REC_EXPOSURE | 【视频】全景 + FPV 新体验，大疆 Avata 360 全景无人机有什么新玩法？ | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:31 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | SKIP | - | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 罗技中国发布声明，就"罗技 G 官方旗舰店"违规视频内容致歉 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 维基百科向直接用 AI 撰写条目说"不"，仍允许 AI 润色和翻译 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 英伟达及黄仁勋遭投资者集体诉讼：被指隐瞒游戏显卡收入对加密货币挖矿的依赖 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 宣传视频称"我一降价就像狗一样跑来"，罗技客服称相关同事已被警告、处罚 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 专访 OPPO 陈希：打造 AIOS，就是模拟人生 \| 系统观 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 更奢华的 7 系和 X7：宝马新世代 Alpina 首批车型 5 月 15 日首秀 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | Epic 喜加二：《Hyper Echelon》《Havendock》游戏免费领取 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 问界汽车：关注到部分用户提出车辆软硬件升级的诉求，正在积极寻找解决方案 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 192MB 的 L3：AMD 锐龙 9 9950X3D2 双缓存版台式处理器上线 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 智己 LS8 汽车 45 分钟小订突破 10000 台，预售权益价 25.98 万元起 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 距离虽短意义重大：CERN 完成首次反质子卡车运输 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 奔驰"小 g"越野车谍照再曝：延续大 G 设计，车身预计长 4.4 米 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 三星 Galaxy A57 5G 手机国行 4 月 11 日开售：Exynos 1680 芯片、5000mAh 电池，3299 元起 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 被电装收购外的另一选择：消息称罗姆将就合并业务与三菱电机、东芝谈判 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 中国无人装甲车最新画面曝光：30 毫米速射炮、7.62 毫米机枪、反坦克导弹，模块化武器系统按需切换 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 英特尔发布 Q1.26 版锐炫 Arc Pro 专业显卡驱动程序，支持 B70 / B65 独立显卡 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 苹果宣布新增四家美国制造合作伙伴，计划在本土生产更多零部件 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 零跑朱江明：国内现在有 17 家车企，但国内市场容不下 17 家 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 英特尔确认不会推出酷睿 Ultra 9 处理器 290K Plus | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 王兴：美团力争成为未来本地生活服务需求的重要 AI 入口 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 一加李杰再谈手机内存成本上涨：幅度超 400% 可以说涨疯了，没有哪一家可以完全避开 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 《街头霸王 6》亚历克斯与养妹结婚剧情引争议，官方致歉但不打算改 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 大众、小鹏合作首款车型：中大型 SUV 与众 08 预售，23.99 万-29.99 万元 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 消息称 JDI 茂原显示工厂改建 AI 数据中心遇阻，美光等有意购入 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 网传"新能源车充电涨价是因为用油发电"？央视揭秘背后的真相 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 【IT之家开箱】iQOO Z11 实拍图赏：iQOO 手机最大 9020mAh 电池 + iQOO 首个 165Hz 护眼电竞屏 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 欧盟 AI 法案关键条款推迟实施，同时支持封禁脱衣换脸类应用 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 微星推出 MAG 272UP QD-OLED E16 显示器：26.5" UHD 165Hz | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 长城汽车魏牌赵永坡：智能驾驶路线上传感器越多未必越好，内耗反而抵消优势 | Rss聚合Feed | - |
+| 06:45:33 | REC_EXPOSURE | 【视频】全景 + FPV 新体验，大疆 Avata 360 全景无人机有什么新玩法？ | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:34 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | SKIP | - | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 罗技中国发布声明，就"罗技 G 官方旗舰店"违规视频内容致歉 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 维基百科向直接用 AI 撰写条目说"不"，仍允许 AI 润色和翻译 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 英伟达及黄仁勋遭投资者集体诉讼：被指隐瞒游戏显卡收入对加密货币挖矿的依赖 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 宣传视频称"我一降价就像狗一样跑来"，罗技客服称相关同事已被警告、处罚 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 专访 OPPO 陈希：打造 AIOS，就是模拟人生 \| 系统观 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 更奢华的 7 系和 X7：宝马新世代 Alpina 首批车型 5 月 15 日首秀 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | Epic 喜加二：《Hyper Echelon》《Havendock》游戏免费领取 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 问界汽车：关注到部分用户提出车辆软硬件升级的诉求，正在积极寻找解决方案 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 192MB 的 L3：AMD 锐龙 9 9950X3D2 双缓存版台式处理器上线 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 智己 LS8 汽车 45 分钟小订突破 10000 台，预售权益价 25.98 万元起 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 距离虽短意义重大：CERN 完成首次反质子卡车运输 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 奔驰"小 g"越野车谍照再曝：延续大 G 设计，车身预计长 4.4 米 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 三星 Galaxy A57 5G 手机国行 4 月 11 日开售：Exynos 1680 芯片、5000mAh 电池，3299 元起 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 被电装收购外的另一选择：消息称罗姆将就合并业务与三菱电机、东芝谈判 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 中国无人装甲车最新画面曝光：30 毫米速射炮、7.62 毫米机枪、反坦克导弹，模块化武器系统按需切换 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 英特尔发布 Q1.26 版锐炫 Arc Pro 专业显卡驱动程序，支持 B70 / B65 独立显卡 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 苹果宣布新增四家美国制造合作伙伴，计划在本土生产更多零部件 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 零跑朱江明：国内现在有 17 家车企，但国内市场容不下 17 家 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 英特尔确认不会推出酷睿 Ultra 9 处理器 290K Plus | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 王兴：美团力争成为未来本地生活服务需求的重要 AI 入口 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 一加李杰再谈手机内存成本上涨：幅度超 400% 可以说涨疯了，没有哪一家可以完全避开 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 《街头霸王 6》亚历克斯与养妹结婚剧情引争议，官方致歉但不打算改 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 大众、小鹏合作首款车型：中大型 SUV 与众 08 预售，23.99 万-29.99 万元 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 消息称 JDI 茂原显示工厂改建 AI 数据中心遇阻，美光等有意购入 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 网传"新能源车充电涨价是因为用油发电"？央视揭秘背后的真相 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 【IT之家开箱】iQOO Z11 实拍图赏：iQOO 手机最大 9020mAh 电池 + iQOO 首个 165Hz 护眼电竞屏 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 欧盟 AI 法案关键条款推迟实施，同时支持封禁脱衣换脸类应用 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 微星推出 MAG 272UP QD-OLED E16 显示器：26.5" UHD 165Hz | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 长城汽车魏牌赵永坡：智能驾驶路线上传感器越多未必越好，内耗反而抵消优势 | Rss聚合Feed | - |
+| 06:45:35 | REC_EXPOSURE | 【视频】全景 + FPV 新体验，大疆 Avata 360 全景无人机有什么新玩法？ | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:36 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | SKIP | - | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 罗技中国发布声明，就"罗技 G 官方旗舰店"违规视频内容致歉 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 维基百科向直接用 AI 撰写条目说"不"，仍允许 AI 润色和翻译 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 英伟达及黄仁勋遭投资者集体诉讼：被指隐瞒游戏显卡收入对加密货币挖矿的依赖 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 宣传视频称"我一降价就像狗一样跑来"，罗技客服称相关同事已被警告、处罚 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 专访 OPPO 陈希：打造 AIOS，就是模拟人生 \| 系统观 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 更奢华的 7 系和 X7：宝马新世代 Alpina 首批车型 5 月 15 日首秀 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | Epic 喜加二：《Hyper Echelon》《Havendock》游戏免费领取 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 问界汽车：关注到部分用户提出车辆软硬件升级的诉求，正在积极寻找解决方案 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 192MB 的 L3：AMD 锐龙 9 9950X3D2 双缓存版台式处理器上线 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 智己 LS8 汽车 45 分钟小订突破 10000 台，预售权益价 25.98 万元起 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 距离虽短意义重大：CERN 完成首次反质子卡车运输 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 奔驰"小 g"越野车谍照再曝：延续大 G 设计，车身预计长 4.4 米 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 三星 Galaxy A57 5G 手机国行 4 月 11 日开售：Exynos 1680 芯片、5000mAh 电池，3299 元起 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 被电装收购外的另一选择：消息称罗姆将就合并业务与三菱电机、东芝谈判 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 中国无人装甲车最新画面曝光：30 毫米速射炮、7.62 毫米机枪、反坦克导弹，模块化武器系统按需切换 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 英特尔发布 Q1.26 版锐炫 Arc Pro 专业显卡驱动程序，支持 B70 / B65 独立显卡 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 苹果宣布新增四家美国制造合作伙伴，计划在本土生产更多零部件 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 零跑朱江明：国内现在有 17 家车企，但国内市场容不下 17 家 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 英特尔确认不会推出酷睿 Ultra 9 处理器 290K Plus | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 王兴：美团力争成为未来本地生活服务需求的重要 AI 入口 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 一加李杰再谈手机内存成本上涨：幅度超 400% 可以说涨疯了，没有哪一家可以完全避开 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 《街头霸王 6》亚历克斯与养妹结婚剧情引争议，官方致歉但不打算改 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 大众、小鹏合作首款车型：中大型 SUV 与众 08 预售，23.99 万-29.99 万元 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 消息称 JDI 茂原显示工厂改建 AI 数据中心遇阻，美光等有意购入 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 网传"新能源车充电涨价是因为用油发电"？央视揭秘背后的真相 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 【IT之家开箱】iQOO Z11 实拍图赏：iQOO 手机最大 9020mAh 电池 + iQOO 首个 165Hz 护眼电竞屏 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 欧盟 AI 法案关键条款推迟实施，同时支持封禁脱衣换脸类应用 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 微星推出 MAG 272UP QD-OLED E16 显示器：26.5" UHD 165Hz | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 长城汽车魏牌赵永坡：智能驾驶路线上传感器越多未必越好，内耗反而抵消优势 | Rss聚合Feed | - |
+| 06:45:37 | REC_EXPOSURE | 【视频】全景 + FPV 新体验，大疆 Avata 360 全景无人机有什么新玩法？ | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 保时捷确认将推出新一代燃油版卡宴，预计 2028-2029 年亮相 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | "老头乐"向小米汽车致歉，承认小米有相关设计专利权，已撤回专利无效请求 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 谷歌神技引发行业剧震，内存条真的要降价了吗？想多了 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 英国政府建议家长严控幼儿屏幕使用时间：2 岁以下完全避免，2-5 岁每天不超 1 小时 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 4.48 万元起！全新五菱宏光 MINI EV 变为四门四座，既实用，也体面 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 消息称任天堂计划今年推《星际火狐》新作、《塞尔达传说：时之笛》重制版 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 外卖大战一周年，战损比就是护城河 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 俄罗斯新一代载人飞船计划 2028 年首飞 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 微软 Win11 系统 KB5079391 更新发布，修复持续近一年的 WUSA 更新无法安装问题 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 苹果向 iOS 17 及更旧系统 iPhone 用户推送安全警报，敦促尽快升级 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 谷歌员工喜提全新智能体"Smith"：与《黑客帝国》反派同名，火到官方限制访问 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 长城 X 系列金牌全模组电源开启新品预约：额定功率 1000/1200W，售价 699/799 元 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 小米汽车谈"融资租赁方案"：合法合规，网上所说有违规风险、有套路均不属实 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 广汽 2025 年总营收 965.42 亿元减少约 10.43%，全年净亏 87.8 亿元大减 1166.51% | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 艾利和 AK Cradle 扩展底座上市：支持 SP4000、PD10、PD20 等播放器，3299 元 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | TCL 科技：2025 年营收 1840.6 亿同比增长 11.7%，净利润 45.2 亿同比增长 188.8% | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 技嘉内存超频强板 Z890 AORUS ELITE DUO X 上市，2299 元 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 分析师谈索尼 PS5 系列游戏机涨价：微软、任天堂跟进也不足为奇 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 三星电子公布消费级固态硬盘 BM9K1，高性能 PCIe Gen5 QLC 产品 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 消息称乐道重启两款新车研发：一款轿车 + 一款 SUV，均定位 20 万元级 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 海尔智家：2025 年全球营收首次突破 3000 亿，同比增长 5.71% | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 卡普空确认《生化危机：安魂曲》游戏剧情扩展 DLC 制作中，拍照模式已上线 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 洛斐 QQ 音乐联名外设泄露：极地苔原配色，Fn+🎶激活 432Hz 自然声 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 摩尔线程 MTT S5000 适配 FlagOS 训练全要素软件栈，实现 Qwen3-0.6B 端到端无中断训练 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 消息称苹果 iPhone 18 系列手机灵动岛缩小，黑边、边框没有变化 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 苹果 iOS 26.4 导致《生化危机》游戏崩溃，官方回应"正在调查" | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 长安汽车巴西工厂投产：首台本土化 UNI-T 下线，巴西总统卢拉致辞 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 智谱 GLM-5.1 模型公布，所有 Coding Plan 用户均可调用 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 传音控股 2025 年营收 655.91 亿同比下降 4.55%，存储等元器件价格上涨较多 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 比亚迪 2025 全年营收 8039.6 亿元，同比增长 3.46% | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | SKIP | - | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 保时捷确认将推出新一代燃油版卡宴，预计 2028-2029 年亮相 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | "老头乐"向小米汽车致歉，承认小米有相关设计专利权，已撤回专利无效请求 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 谷歌神技引发行业剧震，内存条真的要降价了吗？想多了 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 英国政府建议家长严控幼儿屏幕使用时间：2 岁以下完全避免，2-5 岁每天不超 1 小时 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 4.48 万元起！全新五菱宏光 MINI EV 变为四门四座，既实用，也体面 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 消息称任天堂计划今年推《星际火狐》新作、《塞尔达传说：时之笛》重制版 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 外卖大战一周年，战损比就是护城河 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 俄罗斯新一代载人飞船计划 2028 年首飞 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 微软 Win11 系统 KB5079391 更新发布，修复持续近一年的 WUSA 更新无法安装问题 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 苹果向 iOS 17 及更旧系统 iPhone 用户推送安全警报，敦促尽快升级 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 谷歌员工喜提全新智能体"Smith"：与《黑客帝国》反派同名，火到官方限制访问 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 长城 X 系列金牌全模组电源开启新品预约：额定功率 1000/1200W，售价 699/799 元 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 小米汽车谈"融资租赁方案"：合法合规，网上所说有违规风险、有套路均不属实 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 广汽 2025 年总营收 965.42 亿元减少约 10.43%，全年净亏 87.8 亿元大减 1166.51% | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 艾利和 AK Cradle 扩展底座上市：支持 SP4000、PD10、PD20 等播放器，3299 元 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | TCL 科技：2025 年营收 1840.6 亿同比增长 11.7%，净利润 45.2 亿同比增长 188.8% | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 技嘉内存超频强板 Z890 AORUS ELITE DUO X 上市，2299 元 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 分析师谈索尼 PS5 系列游戏机涨价：微软、任天堂跟进也不足为奇 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 三星电子公布消费级固态硬盘 BM9K1，高性能 PCIe Gen5 QLC 产品 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 消息称乐道重启两款新车研发：一款轿车 + 一款 SUV，均定位 20 万元级 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 海尔智家：2025 年全球营收首次突破 3000 亿，同比增长 5.71% | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 卡普空确认《生化危机：安魂曲》游戏剧情扩展 DLC 制作中，拍照模式已上线 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 洛斐 QQ 音乐联名外设泄露：极地苔原配色，Fn+🎶激活 432Hz 自然声 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 摩尔线程 MTT S5000 适配 FlagOS 训练全要素软件栈，实现 Qwen3-0.6B 端到端无中断训练 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 消息称苹果 iPhone 18 系列手机灵动岛缩小，黑边、边框没有变化 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 苹果 iOS 26.4 导致《生化危机》游戏崩溃，官方回应"正在调查" | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 长安汽车巴西工厂投产：首台本土化 UNI-T 下线，巴西总统卢拉致辞 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 智谱 GLM-5.1 模型公布，所有 Coding Plan 用户均可调用 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 传音控股 2025 年营收 655.91 亿同比下降 4.55%，存储等元器件价格上涨较多 | Rss聚合Feed | - |
+| 12:20:43 | REC_EXPOSURE | 比亚迪 2025 全年营收 8039.6 亿元，同比增长 3.46% | Rss聚合Feed | - |
