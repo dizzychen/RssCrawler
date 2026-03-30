@@ -30,6 +30,8 @@ class PreferenceFilter:
         model: str = "qwen-plus",
         batch_size: int = 10,
         score_threshold: int = 4,
+        llm_timeout: int = 20,
+        llm_max_retries: int = 2,
     ) -> None:
         """
         Args:
@@ -40,6 +42,8 @@ class PreferenceFilter:
             model: 模型名称
             batch_size: 每批判断的文章数量
             score_threshold: 相关度评分阈值（1-10），≥ 此分数的文章通过筛选
+            llm_timeout: 单次 LLM 请求超时（秒）
+            llm_max_retries: LLM 请求最大重试次数（不含首轮）
         """
         self.store = store
         self.data_dir = data_dir
@@ -48,6 +52,8 @@ class PreferenceFilter:
         self.model = model
         self.batch_size = batch_size
         self.score_threshold = score_threshold
+        self.llm_timeout = max(1, int(llm_timeout))
+        self.llm_max_retries = max(0, int(llm_max_retries))
 
         # 偏好文本缓存
         self._pref_cache: str = ""
@@ -262,23 +268,49 @@ class PreferenceFilter:
 - 宁松勿严：有一定技术含量的文章倾向于给更高分
 
 ## 返回格式
-返回 JSON 数组：[{{"index": 1, "score": 7}}, ...]
+返回 JSON 对象：{{"results": [{{"index": 1, "score": 7}}, ...]}}
 只返回 JSON，不要任何其他文字。"""
 
-        start = time.time()
-        response = self._client.chat.completions.create(
-            model=self.model,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.1,
-            response_format={"type": "json_object"},
-        )
-        elapsed = time.time() - start
-        logger.info("LLM 批量判断: %d 篇, 耗时 %.1fs", len(articles), elapsed)
+        last_error: Optional[Exception] = None
+        max_attempts = self.llm_max_retries + 1
 
-        # 解析响应
-        content = response.choices[0].message.content or ""
-        results = self._parse_llm_response(content, articles)
-        return results
+        for attempt in range(1, max_attempts + 1):
+            try:
+                start = time.time()
+                response = self._client.chat.completions.create(
+                    model=self.model,
+                    messages=[{"role": "user", "content": prompt}],
+                    temperature=0.1,
+                    response_format={"type": "json_object"},
+                    timeout=self.llm_timeout,
+                )
+                elapsed = time.time() - start
+                logger.info(
+                    "LLM 批量判断: %d 篇, 耗时 %.1fs (第 %d/%d 次)",
+                    len(articles),
+                    elapsed,
+                    attempt,
+                    max_attempts,
+                )
+
+                # 解析响应
+                content = response.choices[0].message.content or ""
+                return self._parse_llm_response(content, articles)
+            except Exception as e:
+                last_error = e
+                if attempt >= max_attempts:
+                    break
+                backoff = min(2 ** attempt, 8)
+                logger.warning(
+                    "LLM 请求失败，%.1f 秒后重试 (%d/%d): %s",
+                    backoff,
+                    attempt,
+                    max_attempts,
+                    e,
+                )
+                time.sleep(backoff)
+
+        raise RuntimeError(f"LLM 批量判断失败（已重试 {self.llm_max_retries} 次）: {last_error}")
 
     def _parse_llm_response(
         self, content: str, articles: list[dict]

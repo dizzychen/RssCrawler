@@ -6,16 +6,14 @@ RSS 解析模块
 import feedparser
 import logging
 import requests
-import urllib3
 from bs4 import BeautifulSoup
 from datetime import datetime
 from email.utils import parsedate_to_datetime
 
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 logger = logging.getLogger(__name__)
 
 
-def parse_feed(url: str, source_name: str) -> list[dict]:
+def parse_feed(url: str, source_name: str, verify_tls: bool = True) -> list[dict]:
     """
     解析 RSS/Atom 源，返回标准化的文章列表
     
@@ -43,7 +41,7 @@ def parse_feed(url: str, source_name: str) -> list[dict]:
                 "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
                 "Accept": "application/rss+xml,application/xml,text/xml;q=0.9,*/*;q=0.8",
             },
-            verify=False,
+            verify=verify_tls,
         )
         resp.encoding = resp.apparent_encoding or "utf-8"
         raw_text = resp.text
@@ -192,7 +190,7 @@ def _fallback_parse(raw_text: str, source_name: str) -> list[dict]:
     return articles
 
 
-def get_feed_info(url: str) -> dict:
+def get_feed_info(url: str, verify_tls: bool = True) -> dict:
     """
     获取 RSS 源的频道信息
     
@@ -209,7 +207,7 @@ def get_feed_info(url: str) -> dict:
                 "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
                 "Accept": "application/rss+xml,application/xml,text/xml;q=0.9,*/*;q=0.8",
             },
-            verify=False,
+            verify=verify_tls,
         )
         resp.encoding = resp.apparent_encoding or "utf-8"
         feed = feedparser.parse(resp.text)

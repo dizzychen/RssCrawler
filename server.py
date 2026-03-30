@@ -81,7 +81,8 @@ def create_app(
             name = source["name"]
             articles = store.get_articles(source_name=name, limit=feed_items_limit)
             if pref_filter:
-                articles = pref_filter.filter_articles(articles)
+                # 请求路径只使用缓存结果，避免触发实时 LLM 调用
+                articles = pref_filter.filter_cached_only(articles)
             all_filtered.extend(articles)
         # 按时间倒序
         all_filtered.sort(
@@ -105,7 +106,8 @@ def create_app(
             source_name=source_name, limit=feed_items_limit
         )
         if pref_filter:
-            articles = pref_filter.filter_articles(articles)
+            # 请求路径只使用缓存结果，避免触发实时 LLM 调用
+            articles = pref_filter.filter_cached_only(articles)
         xml = feed_gen.generate_feed_xml(articles, source_name, source_config)
         return Response(content=xml, media_type="application/xml; charset=utf-8")
 

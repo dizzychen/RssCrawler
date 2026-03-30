@@ -4,6 +4,8 @@
 """
 
 import logging
+import threading
+from datetime import datetime
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.interval import IntervalTrigger
 
@@ -43,6 +45,7 @@ class CrawlScheduler:
         self.feed_items_limit = feed_items_limit
         self.pref_filter = pref_filter
         self._fetchers: dict[str, ContentFetcher] = {}
+        self._crawl_lock = threading.Lock()
 
         self.scheduler = BackgroundScheduler()
 
@@ -69,7 +72,8 @@ class CrawlScheduler:
         logger.info("=== 开始抓取源: %s ===", name)
 
         # 1. 解析 RSS
-        articles = parse_feed(url, name)
+        verify_tls = source.get("verify_tls", True)
+        articles = parse_feed(url, name, verify_tls=verify_tls)
         if not articles:
             logger.warning("源 [%s] 未获取到任何文章", name)
             return
@@ -120,42 +124,46 @@ class CrawlScheduler:
 
     def crawl_all(self) -> None:
         """抓取所有配置的 RSS 源"""
-        logger.info("====== 开始全量抓取 (%d 个源) ======", len(self.sources))
+        if not self._crawl_lock.acquire(blocking=False):
+            logger.warning("检测到抓取任务仍在执行，跳过本轮触发")
+            return
 
-        for source in self.sources:
-            try:
-                self.crawl_source(source)
-            except Exception as e:
-                logger.error("抓取源 [%s] 异常: %s", source["name"], e, exc_info=True)
+        try:
+            logger.info("====== 开始全量抓取 (%d 个源) ======", len(self.sources))
 
-        # 生成聚合 Feed
-        self.feed_gen.export_all_static(
-            self.store, self.sources, self.feed_items_limit,
-            pref_filter=self.pref_filter,
-        )
+            for source in self.sources:
+                try:
+                    self.crawl_source(source)
+                except Exception as e:
+                    logger.error("抓取源 [%s] 异常: %s", source["name"], e, exc_info=True)
 
-        logger.info("====== 全量抓取完成 ======")
+            # 生成聚合 Feed
+            self.feed_gen.export_all_static(
+                self.store, self.sources, self.feed_items_limit,
+                pref_filter=self.pref_filter,
+            )
+
+            logger.info("====== 全量抓取完成 ======")
+        finally:
+            self._crawl_lock.release()
 
     def start(self) -> None:
         """启动定时调度器"""
-        # 添加定时任务
+        # 添加定时任务：首轮立即触发，后续按固定间隔执行
         self.scheduler.add_job(
             self.crawl_all,
             trigger=IntervalTrigger(minutes=self.update_interval),
             id="crawl_all",
             name="RSS 全文抓取",
+            next_run_time=datetime.now(),
             max_instances=1,  # 防止任务重叠
             replace_existing=True,
         )
 
         self.scheduler.start()
         logger.info(
-            "定时调度器已启动: 每 %d 分钟执行一次", self.update_interval
+            "定时调度器已启动: 首轮立即执行，之后每 %d 分钟执行一次", self.update_interval
         )
-
-        # 首次立即执行一次
-        logger.info("首次启动，立即执行一次抓取...")
-        self.crawl_all()
 
     def stop(self) -> None:
         """停止调度器"""

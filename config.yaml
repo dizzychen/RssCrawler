@@ -18,16 +18,20 @@ global:
 
 # 偏好筛选配置（基于 LLM 的智能内容过滤）
 filter:
-  # 是否启用偏好筛选（需配置 api_key 后才生效）
+  # 是否启用偏好筛选（需设置环境变量 DASHSCOPE_API_KEY 后才生效）
   enabled: true
-  # DashScope API Key（也可通过环境变量 DASHSCOPE_API_KEY 设置，环境变量优先）
-  api_key: "sk-1df055035e0a4291b70b80ab1989e8b6"
+  # 仅占位：程序不会读取该字段，请使用环境变量 DASHSCOPE_API_KEY
+  api_key: ""
   # LLM 模型名称
   model: "qwen-plus"
   # 每批判断的文章数量
   batch_size: 10
   # 相关度评分阈值（1-10），≥ 此分数的文章通过筛选，越低越宽松
   score_threshold: 4
+  # 单次 LLM 请求超时（秒）
+  llm_timeout: 20
+  # LLM 请求失败后的最大重试次数（不含首轮）
+  llm_max_retries: 2
   # 偏好数据文件目录
   data_dir: "./data"
 

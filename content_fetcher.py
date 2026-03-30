@@ -7,6 +7,7 @@ import os
 import time
 import random
 import logging
+from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 from typing import Optional
@@ -115,9 +116,10 @@ class ContentFetcher:
                             redirect_url,
                         )
                         return None
-                    # 非登录重定向，跟随
+                    # 非登录重定向，跟随（兼容相对路径）
+                    next_url = urljoin(url, redirect_url)
                     response = self.session.get(
-                        redirect_url,
+                        next_url,
                         headers=headers,
                         timeout=15,
                     )

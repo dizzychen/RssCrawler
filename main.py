@@ -5,13 +5,12 @@ RssCrawler - RSS 全文代理服务
 
 import os
 import sys
+import ssl
 
-# 修复 macOS 上 Python SSL 证书问题
-try:
-    import certifi
-    os.environ.setdefault("SSL_CERT_FILE", certifi.where())
-except ImportError:
-    pass
+# 优先使用系统证书，避免依赖可选第三方包导致静态检查报错
+default_cafile = ssl.get_default_verify_paths().cafile
+if default_cafile:
+    os.environ.setdefault("SSL_CERT_FILE", default_cafile)
 import argparse
 import logging
 import logging.handlers
@@ -26,14 +25,32 @@ from server import create_app
 from preference_filter import PreferenceFilter
 
 
+def _deep_merge(base: dict, override: dict) -> dict:
+    """递归合并字典，override 优先"""
+    merged = dict(base)
+    for key, value in (override or {}).items():
+        if isinstance(value, dict) and isinstance(merged.get(key), dict):
+            merged[key] = _deep_merge(merged[key], value)
+        else:
+            merged[key] = value
+    return merged
+
+
 def load_config(config_path: str) -> dict:
-    """加载 YAML 配置文件"""
+    """加载 YAML 配置文件，支持同目录 config.local.yaml 本地覆盖"""
     if not os.path.isfile(config_path):
         print(f"错误: 配置文件不存在 - {config_path}")
         sys.exit(1)
 
     with open(config_path, "r", encoding="utf-8") as f:
-        config = yaml.safe_load(f)
+        config = yaml.safe_load(f) or {}
+
+    # 可选本地覆盖配置（用于密钥等敏感信息，不入库）
+    local_path = os.path.join(os.path.dirname(config_path) or ".", "config.local.yaml")
+    if os.path.isfile(local_path):
+        with open(local_path, "r", encoding="utf-8") as f:
+            local_config = yaml.safe_load(f) or {}
+        config = _deep_merge(config, local_config)
 
     if not config or "sources" not in config:
         print("错误: 配置文件格式不正确，缺少 sources 配置")
@@ -147,8 +164,8 @@ def main():
     filter_config = config.get("filter", {})
     pref_filter = None
     if filter_config.get("enabled", False):
-        # 环境变量优先
-        api_key = os.environ.get("DASHSCOPE_API_KEY") or filter_config.get("api_key", "")
+        # 仅从环境变量读取，避免配置文件存储敏感信息
+        api_key = os.environ.get("DASHSCOPE_API_KEY", "")
         if api_key:
             pref_filter = PreferenceFilter(
                 store=store,
@@ -157,10 +174,12 @@ def main():
                 model=filter_config.get("model", "qwen-plus"),
                 batch_size=filter_config.get("batch_size", 10),
                 score_threshold=filter_config.get("score_threshold", 4),
+                llm_timeout=filter_config.get("llm_timeout", 20),
+                llm_max_retries=filter_config.get("llm_max_retries", 2),
             )
             logger.info("偏好筛选器已启用 (模型: %s, 阈值: %d)", filter_config.get("model", "qwen-plus"), filter_config.get("score_threshold", 4))
         else:
-            logger.warning("偏好筛选已启用但未配置 API Key，筛选功能不生效")
+            logger.warning("偏好筛选已启用但未设置环境变量 DASHSCOPE_API_KEY，筛选功能不生效")
 
     # 4. 创建调度器
     crawl_scheduler = CrawlScheduler(
