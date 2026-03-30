@@ -5,9 +5,13 @@ RSS 解析模块
 
 import feedparser
 import logging
+import requests
+import urllib3
+from bs4 import BeautifulSoup
 from datetime import datetime
 from email.utils import parsedate_to_datetime
 
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 logger = logging.getLogger(__name__)
 
 
@@ -31,13 +35,39 @@ def parse_feed(url: str, source_name: str) -> list[dict]:
     logger.info("开始解析 RSS 源: %s (%s)", source_name, url)
 
     try:
-        feed = feedparser.parse(url)
+        # 先用 requests 下载（支持跳过 SSL 验证等场景），再用 feedparser 解析
+        resp = requests.get(
+            url,
+            timeout=15,
+            headers={
+                "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "Accept": "application/rss+xml,application/xml,text/xml;q=0.9,*/*;q=0.8",
+            },
+            verify=False,
+        )
+        resp.encoding = resp.apparent_encoding or "utf-8"
+        raw_text = resp.text
+        feed = feedparser.parse(raw_text)
     except Exception as e:
         logger.error("解析 RSS 源失败 [%s]: %s", source_name, e)
         return []
 
-    if feed.bozo and not feed.entries:
-        logger.warning("RSS 源解析异常 [%s]: %s", source_name, feed.bozo_exception)
+    # feedparser 成功解析出 entries 则使用
+    if feed.entries:
+        if feed.bozo:
+            logger.debug("RSS 源 [%s] XML 有瑕疵但仍可解析: %s", source_name, feed.bozo_exception)
+    else:
+        # feedparser 没解析出 entries，尝试 BeautifulSoup 容错解析
+        if feed.bozo:
+            logger.debug("feedparser 解析失败 [%s]: %s，尝试容错解析", source_name, feed.bozo_exception)
+        try:
+            articles = _fallback_parse(raw_text, source_name)
+            if articles:
+                logger.info("RSS 源 [%s] 容错解析完成, 获取 %d 篇文章", source_name, len(articles))
+                return articles
+        except Exception as e:
+            logger.warning("容错解析也失败 [%s]: %s", source_name, e)
+        logger.warning("RSS 源 [%s] 未获取到任何文章", source_name)
         return []
 
     articles = []
@@ -112,6 +142,56 @@ def _parse_publish_time(entry) -> str:
     return ""
 
 
+def _fallback_parse(raw_text: str, source_name: str) -> list[dict]:
+    """
+    使用 BeautifulSoup 容错解析不规范的 RSS/Atom XML。
+    当 feedparser 严格解析失败时作为 fallback。
+    """
+    soup = BeautifulSoup(raw_text, "lxml-xml")
+    items = soup.find_all("item") or soup.find_all("entry")
+
+    articles = []
+    for item in items:
+        title_el = item.find("title")
+        link_el = item.find("link")
+        title = title_el.get_text(strip=True) if title_el else ""
+        # link 可能是文本节点或 href 属性
+        link = ""
+        if link_el:
+            link = link_el.get("href", "") or link_el.get_text(strip=True)
+
+        if not title or not link:
+            continue
+
+        # 摘要
+        desc_el = item.find("description") or item.find("summary") or item.find("content")
+        summary = desc_el.get_text(strip=True) if desc_el else ""
+
+        # 作者
+        author_el = item.find("author") or item.find("dc:creator")
+        author = author_el.get_text(strip=True) if author_el else ""
+
+        # 时间
+        pub_el = item.find("pubDate") or item.find("published") or item.find("updated")
+        published_at = ""
+        if pub_el:
+            try:
+                published_at = parsedate_to_datetime(pub_el.get_text(strip=True)).isoformat()
+            except (ValueError, TypeError):
+                pass
+
+        articles.append({
+            "source_name": source_name,
+            "title": title,
+            "link": link,
+            "summary": summary,
+            "author": author,
+            "published_at": published_at,
+        })
+
+    return articles
+
+
 def get_feed_info(url: str) -> dict:
     """
     获取 RSS 源的频道信息
@@ -123,7 +203,16 @@ def get_feed_info(url: str) -> dict:
         频道信息字典: title, link, description
     """
     try:
-        feed = feedparser.parse(url)
+        resp = requests.get(
+            url, timeout=15,
+            headers={
+                "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "Accept": "application/rss+xml,application/xml,text/xml;q=0.9,*/*;q=0.8",
+            },
+            verify=False,
+        )
+        resp.encoding = resp.apparent_encoding or "utf-8"
+        feed = feedparser.parse(resp.text)
         return {
             "title": feed.feed.get("title", ""),
             "link": feed.feed.get("link", ""),

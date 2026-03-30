@@ -155,6 +155,7 @@ class FeedGenerator:
             feed_items_limit: 每个 Feed 的文章数量上限
             pref_filter: 偏好筛选器实例（可选）
         """
+        all_filtered = []
         for source in sources:
             name = str(source["name"])
             articles = store.get_articles(source_name=name, limit=feed_items_limit)
@@ -162,15 +163,17 @@ class FeedGenerator:
                 if pref_filter:
                     articles = pref_filter.filter_articles(articles)
                 self.export_static_xml(articles, name, source)
+                all_filtered.extend(articles)
             else:
                 logger.debug("源 [%s] 无文章，跳过静态导出", name)
 
-        # 聚合 Feed
-        all_articles = store.get_articles(source_name=None, limit=feed_items_limit)
-        if all_articles:
-            if pref_filter:
-                all_articles = pref_filter.filter_articles(all_articles)
-            xml = self.generate_feed_xml(all_articles, source_name=None)
+        # 聚合 Feed：合并各源筛选后的文章，按时间倒序
+        if all_filtered:
+            all_filtered.sort(
+                key=lambda a: a.get("published_at") or a.get("created_at") or "",
+                reverse=True,
+            )
+            xml = self.generate_feed_xml(all_filtered, source_name=None)
             filepath = os.path.join(self.output_dir, "all.xml")
             try:
                 with open(filepath, "w", encoding="utf-8") as f:

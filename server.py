@@ -75,11 +75,20 @@ def create_app(
 
     @app.get("/feed/all", summary="聚合全文 Feed")
     async def aggregate_feed():
-        """返回所有源的聚合全文 RSS Feed"""
-        articles = store.get_articles(source_name=None, limit=feed_items_limit)
-        if pref_filter:
-            articles = pref_filter.filter_articles(articles)
-        xml = feed_gen.generate_feed_xml(articles, source_name=None)
+        """返回所有源筛选后的聚合全文 RSS Feed"""
+        all_filtered = []
+        for source in sources:
+            name = source["name"]
+            articles = store.get_articles(source_name=name, limit=feed_items_limit)
+            if pref_filter:
+                articles = pref_filter.filter_articles(articles)
+            all_filtered.extend(articles)
+        # 按时间倒序
+        all_filtered.sort(
+            key=lambda a: a.get("published_at") or a.get("created_at") or "",
+            reverse=True,
+        )
+        xml = feed_gen.generate_feed_xml(all_filtered, source_name=None)
         return Response(content=xml, media_type="application/xml; charset=utf-8")
 
     @app.get("/feed/{source_name}", summary="指定源的全文 Feed")

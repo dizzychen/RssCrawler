@@ -29,6 +29,7 @@ class PreferenceFilter:
         api_base: str = "https://dashscope.aliyuncs.com/compatible-mode/v1",
         model: str = "qwen-plus",
         batch_size: int = 10,
+        score_threshold: int = 4,
     ) -> None:
         """
         Args:
@@ -38,6 +39,7 @@ class PreferenceFilter:
             api_base: API 基础 URL
             model: 模型名称
             batch_size: 每批判断的文章数量
+            score_threshold: 相关度评分阈值（1-10），≥ 此分数的文章通过筛选
         """
         self.store = store
         self.data_dir = data_dir
@@ -45,6 +47,7 @@ class PreferenceFilter:
         self.api_base = api_base
         self.model = model
         self.batch_size = batch_size
+        self.score_threshold = score_threshold
 
         # 偏好文本缓存
         self._pref_cache: str = ""
@@ -242,7 +245,7 @@ class PreferenceFilter:
 
         articles_text = "\n".join(article_list)
 
-        prompt = f"""你是一个智能内容筛选助手。根据以下用户偏好，判断每篇文章是否符合用户的兴趣。
+        prompt = f"""你是一个智能内容筛选助手。根据用户偏好，为每篇文章的相关度打分。
 
 ## 用户偏好
 {preferences}
@@ -250,11 +253,17 @@ class PreferenceFilter:
 ## 待判断文章
 {articles_text}
 
-## 要求
-请对每篇文章判断是否符合用户兴趣偏好，返回 JSON 数组格式：
-[{{"index": 1, "relevant": true/false}}, ...]
+## 评分规则
+- 对每篇文章给出 1-10 的相关度分数
+- 10分：完全匹配核心兴趣（如 AI Agent、RAG、OpenClaw 相关）
+- 7-9分：与兴趣领域相关的泛科技内容（如开源项目、开发工具、编程语言、技术趋势）
+- 4-6分：泛科技新闻，有一定信息价值（如科技公司动态、互联网产品更新）
+- 1-3分：与用户兴趣完全无关（如娱乐八卦、体育、汽车、纯硬件参数、促销广告）
+- 宁松勿严：有一定技术含量的文章倾向于给更高分
 
-只返回 JSON 数组，不要任何其他文字。"""
+## 返回格式
+返回 JSON 数组：[{{"index": 1, "score": 7}}, ...]
+只返回 JSON，不要任何其他文字。"""
 
         start = time.time()
         response = self._client.chat.completions.create(
@@ -274,7 +283,7 @@ class PreferenceFilter:
     def _parse_llm_response(
         self, content: str, articles: list[dict]
     ) -> dict[str, bool]:
-        """解析 LLM 返回的 JSON 结果"""
+        """解析 LLM 返回的 JSON 结果（评分制：score >= threshold 为通过）"""
         results: dict[str, bool] = {}
 
         try:
@@ -287,7 +296,12 @@ class PreferenceFilter:
                     idx = item.get("index", 0) - 1  # 转为 0-based
                     if 0 <= idx < len(articles):
                         link = articles[idx].get("link", "")
-                        results[link] = bool(item.get("relevant", True))
+                        score = item.get("score", 5)
+                        # 兼容旧的 relevant 字段
+                        if "relevant" in item and "score" not in item:
+                            results[link] = bool(item["relevant"])
+                        else:
+                            results[link] = int(score) >= self.score_threshold
         except (json.JSONDecodeError, KeyError, TypeError) as e:
             logger.warning("LLM 响应解析失败，默认保留全部文章: %s", e)
 

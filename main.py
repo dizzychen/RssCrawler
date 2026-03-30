@@ -156,8 +156,9 @@ def main():
                 api_key=api_key,
                 model=filter_config.get("model", "qwen-plus"),
                 batch_size=filter_config.get("batch_size", 10),
+                score_threshold=filter_config.get("score_threshold", 4),
             )
-            logger.info("偏好筛选器已启用 (模型: %s)", filter_config.get("model", "qwen-plus"))
+            logger.info("偏好筛选器已启用 (模型: %s, 阈值: %d)", filter_config.get("model", "qwen-plus"), filter_config.get("score_threshold", 4))
         else:
             logger.warning("偏好筛选已启用但未配置 API Key，筛选功能不生效")
 

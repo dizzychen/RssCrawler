@@ -26,6 +26,8 @@ filter:
   model: "qwen-plus"
   # 每批判断的文章数量
   batch_size: 10
+  # 相关度评分阈值（1-10），≥ 此分数的文章通过筛选，越低越宽松
+  score_threshold: 4
   # 偏好数据文件目录
   data_dir: "./data"
 
@@ -50,3 +52,10 @@ sources:
     content_selector: ".article-body"
     requires_login: false
     description: "少数派"
+
+  - name: "oschina"
+    url: "https://www.oschina.net/news/rss"
+    cookie_file: null
+    content_selector: ""
+    requires_login: false
+    description: "开源中国"
